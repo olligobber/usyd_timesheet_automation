@@ -155,51 +155,57 @@ for i, entry in enumerate(raw_data):
     field = element.find_element("xpath", './*[@id="P_WORK_DATE"]')
     field.send_keys(entry[0])
 
+    # Unit of Study
+    element = driver.find_element("xpath",
+    '/html/body/form/table/tbody/tr[{}]/td[6]'.format(i+1))
+    field = element.find_element("xpath", './*[@id="P_UNIT_OF_STUDY"]')
+    field.send_keys(entry[1])
+
      # Hours
     element = driver.find_element("xpath",
-    '/html/body/form/table/tbody/tr[{}]/td[6]'.format(i + 1))
+    '/html/body/form/table/tbody/tr[{}]/td[8]'.format(i + 1))
     field = element.find_element("xpath", './*[@id="P_UNITS"]')
-    field.send_keys(entry[1])
+    field.send_keys(entry[2])
 
     # Paycode
     element = driver.find_element("xpath",
     '/html/body/form/table/tbody/tr[{}]/td[7]'.format(i + 1))
     field = element.find_element("xpath",'./*[@id="P_PAYCODE"]')
-    field.send_keys(entry[2])
+    field.send_keys(entry[3])
 
-    if len(entry) > 3:
+    if len(entry) > 4:
         # Analysis Code
         if len(entry[3]) > 0:
             try: # Because of pointless dialogue boxes
                 element = driver.find_element("xpath",
-                '/html/body/form/table/tbody/tr[{}]/td[10]'.format(i + 1))
+                '/html/body/form/table/tbody/tr[{}]/td[11]'.format(i + 1))
                 field = element.find_element("xpath",'./*[@id="P_GL_SUB_ACCOUNT"]')
-                field.send_keys(entry[3])
+                field.send_keys(entry[4])
             except:
                 pass
 
-    if len(entry) > 4:
+    if len(entry) > 5:
         # Topic
-        if len(entry[4]) > 0:
+        if len(entry[5]) > 0:
             try: # Because of pointless dialogue boxes
                 element = driver.find_element("xpath",
                 '/html/body/form/table/tbody/tr[{}]/td[12]'.format(i + 1))
                 field = element.find_element("xpath",'./*[@id="P_TOPIC"]')
-                field.send_keys(entry[4])
+                field.send_keys(entry[5])
             except: # This skips the dialogue boxes
                 element = driver.find_element("xpath",
                 '/html/body/form/table/tbody/tr[{}]/td[12]'.format(i + 1))
                 field = element.find_element("xpath",'./*[@id="P_TOPIC"]')
-                field.send_keys(entry[4])
+                field.send_keys(entry[5])
 
-    if len(entry) > 5:
+    if len(entry) > 6:
         # Details
-        if len(entry[5]) > 0:
+        if len(entry[6]) > 0:
             try: # Because of pointless dialogue boxes
                 element = driver.find_element("xpath",
                 '/html/body/form/table/tbody/tr[{}]/td[13]'.format(i + 1))
                 field = element.find_element("xpath",'./*[@id="P_TOPIC_DETAILS"]')
-                field.send_keys(entry[5])
+                field.send_keys(entry[6])
             except:
                 pass
 
